@@ -2,18 +2,20 @@ const formEl = document.querySelector("form");
 const tableEl = document.querySelector("table");
 const tbodyEl = document.querySelector("#print");
 
+
 formEl.addEventListener("submit", onAddWebsite);
 tableEl.addEventListener("click", onDeleteRow);
 
 
 function onAddWebsite(e) {
     e.preventDefault();
-    const website = document.getElementById("website").value;
-    const url = document.getElementById("url").value;
+    const age = document.getElementById("age").value;
+    const nameE = document.getElementById("name").value;
+
     tbodyEl.innerHTML += `
         <tr>
-            <td>${url}</td>
-            <td>${website}</td>
+            <td>${nameE}</td>
+            <td>${age}</td>
             <td><button class="deleteBtn">Delete</button></td>
         </tr>`;
 }
@@ -22,9 +24,10 @@ function onDeleteRow(e) {
     // console.log(!e.target.classList.contains("deleteBtn"));
     if (!e.target.classList.contains("deleteBtn")) {
         return;
+    } else {
+        const btn = e.target;
+        btn.closest("tr").remove();
     }
-    const btn = e.target;
-    btn.closest("tr").remove();
 }
 
 
